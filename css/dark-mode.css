@@ -1,0 +1,162 @@
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+.dark-mode .navbar {
+    background-color: #1e1e1e;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .nav-links a {
+    color: #e0e0e0;
+}
+
+.dark-mode .nav-links a:hover {
+    color: var(--secondary-color);
+}
+
+.dark-mode .card,
+.dark-mode .service-item,
+.dark-mode .news-card,
+.dark-mode .tutorial-card,
+.dark-mode .team-card,
+.dark-mode .pricing-card,
+.dark-mode .resource-card,
+.dark-mode .qna-item,
+.dark-mode .info-card {
+    background-color: #1e1e1e;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    color: #e0e0e0;
+}
+
+.dark-mode .card h3,
+.dark-mode .service-item h3,
+.dark-mode .news-title,
+.dark-mode .tutorial-card h3,
+.dark-mode .team-name,
+.dark-mode .pricing-card h3,
+.dark-mode .resource-title,
+.dark-mode .question,
+.dark-mode .info-card h3 {
+    color: #ffffff;
+}
+
+.dark-mode .card p,
+.dark-mode .service-item p,
+.dark-mode .news-excerpt,
+.dark-mode .tutorial-card p,
+.dark-mode .team-bio,
+.dark-mode .pricing-features li,
+.dark-mode .resource-desc,
+.dark-mode .answer,
+.dark-mode .info-card p {
+    color: #b0b0b0;
+}
+
+.dark-mode .footer {
+    background-color: #1a1a1a;
+    color: #b0b0b0;
+}
+
+.dark-mode .footer-section.links a,
+.dark-mode .footer-section.contact p,
+.dark-mode .footer-legal a {
+    color: #b0b0b0;
+}
+
+.dark-mode .footer-section.links a:hover,
+.dark-mode .footer-legal a:hover {
+    color: var(--secondary-color);
+}
+
+.dark-mode .footer-bottom {
+    background-color: #121212;
+}
+
+.dark-mode .mission-statement,
+.dark-mode .pricing-section,
+.dark-mode .practice-resources,
+.dark-mode .comparison-section,
+.dark-mode .learning-path,
+.dark-mode .submit-question {
+    background-color: #1e1e1e;
+}
+
+.dark-mode .comparison-table th {
+    background-color: var(--primary-color);
+}
+
+.dark-mode .comparison-table tr:nth-child(even) {
+    background-color: #252525;
+}
+
+.dark-mode .comparison-table tr:hover {
+    background-color: #2e2e2e;
+}
+
+.dark-mode .timeline-content,
+.dark-mode .step-content {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+}
+
+.dark-mode .search-input,
+.dark-mode .form-group input,
+.dark-mode .form-group textarea,
+.dark-mode .form-group select {
+    background-color: #252525;
+    border-color: #333;
+    color: #e0e0e0;
+}
+
+.dark-mode .btn-secondary {
+    border-color: var(--secondary-color);
+    color: var(--secondary-color);
+}
+
+.dark-mode .btn-secondary:hover {
+    background-color: rgba(0, 159, 253, 0.1);
+}
+
+.dark-mode .tab-btn,
+.dark-mode .category-btn,
+.dark-mode .filter-btn {
+    background-color: #252525;
+    color: #e0e0e0;
+}
+
+.dark-mode .tab-btn.active,
+.dark-mode .category-btn.active,
+.dark-mode .filter-btn.active,
+.dark-mode .tab-btn:hover,
+.dark-mode .category-btn:hover,
+.dark-mode .filter-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.dark-mode .page-btn {
+    background-color: #252525;
+    color: #e0e0e0;
+}
+
+.dark-mode .page-btn.active,
+.dark-mode .page-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.dark-mode .social-icons a,
+.dark-mode .team-social a,
+.dark-mode .social-links a {
+    background-color: #252525;
+    color: var(--secondary-color);
+}
+
+.dark-mode .social-icons a:hover,
+.dark-mode .team-social a:hover,
+.dark-mode .social-links a:hover {
+ background-color: rgba(255, 255, 255, 0.1);
+}
