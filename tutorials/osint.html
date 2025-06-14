@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSINT Tutorial | zeroX</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="../images/logo.png" type="image/png">
+    <style>
+        /* Same style block as in sql-injection.html */
+    </style>
+</head>
+<body>
+    <!-- Navigation (same as sql-injection.html) -->
+
+    <main class="tutorial-content">
+        <header class="tutorial-header">
+            <h1>Open Source Intelligence (OSINT)</h1>
+            <div class="meta">
+                <span><i class="fas fa-clock"></i> 18 min read</span>
+                <span><i class="fas fa-level-up-alt"></i> Beginner</span>
+                <span><i class="fas fa-calendar-alt"></i> Updated: June 2025</span>
+            </div>
+        </header>
+        
+        <section class="tutorial-section">
+            <h2>🔍 What is OSINT?</h2>
+            <p><strong>Open Source Intelligence (OSINT)</strong> refers to the collection and analysis of information gathered from publicly available sources to produce actionable intelligence.</p>
+            
+            <div class="info-box">
+                <p><strong>💡 Did you know?</strong> OSINT accounts for over 80% of the intelligence used by cybersecurity professionals and law enforcement.</p>
+            </div>
+        </section>
+        
+        <section class="tutorial-section">
+            <h2>🧠 OSINT Techniques</h2>
+            <ul>
+                <li><strong>Search Engine Queries:</strong> Advanced Google dorking</li>
+                <li><strong>Social Media Analysis:</strong> Extracting info from public profiles</li>
+                <li><strong>Metadata Analysis:</strong> Examining file metadata</li>
+                <li><strong>Domain and IP Research:</strong> WHOIS, DNS records</li>
+                <li><strong>Image Analysis:</strong> Reverse image search, geolocation</li>
+            </ul>
+        </section>
+        
+        <section class="tutorial-section">
+            <h2>🧪 Google Dorking Examples</h2>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Query</th>
+                            <th>Purpose</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>site:example.com filetype:pdf</code></td>
+                            <td>Find PDFs on a specific site</td>
+                        </tr>
+                        <tr>
+                            <td><code>intitle:"index of" "parent directory"</code></td>
+                            <td>Find open directories</td>
+                        </tr>
+                        <tr>
+                            <td><code>inurl:/wp-admin/admin-ajax.php</code></td>
+                            <td>Find WordPress sites</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
+        <section class="tutorial-section">
+            <h2>🚨 OSINT Tools</h2>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tool</th>
+                            <th>Purpose</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a href="https://www.maltego.com" target="_blank">Maltego</a></td>
+                            <td>Relationship mapping</td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://github.com/sherlock-project/sherlock" target="_blank">Sherlock</a></td>
+                            <td>Username search</td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://github.com/laramies/theHarvester" target="_blank">theHarvester</a></td>
+                            <td>Email/domain harvesting</td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.exifdata.com" target="_blank">ExifTool</a></td>
+                            <td>Metadata extraction</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
+        <section class="tutorial-section">
+            <h2>✅ Ethical Considerations</h2>
+            <p>While OSINT uses public information, ethical guidelines still apply:</p>
+            <ul>
+                <li>Respect privacy settings and terms of service</li>
+                <li>Don't use information for harassment</li>
+                <li>Be aware of local laws regarding data collection</li>
+                <li>Use information responsibly</li>
+            </ul>
+        </section>
+        
+        <section class="practice-resources">
+            <h2>🛠️ Practice Resources</h2>
+            <ul>
+                <li><a href="https://osintframework.com" target="_blank">OSINT Framework</a></li>
+                <li><a href="https://www.tracelabs.org" target="_blank">Trace Labs</a> (CTFs)</li>
+                <li><a href="https://github.com/jivoi/awesome-osint" target="_blank">Awesome OSINT</a></li>
+            </ul>
+        </section>
+        
+        <div class="nav-buttons">
+            <a href="metasploit.html" class="nav-button"><i class="fas fa-arrow-left"></i> Metasploit</a>
+            <a href="wireshark.html" class="nav-button">Next: Wireshark <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </main>
+
+    <!-- Footer (same as sql-injection.html) -->
+</body>
+</html>

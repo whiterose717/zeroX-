@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Injection Tutorial | zeroX</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="../images/logo.png" type="image/png">
+    <style>
+        .tutorial-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .tutorial-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .tutorial-header h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .tutorial-header .meta {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .tutorial-section {
+            margin-bottom: 40px;
+        }
+        
+        .tutorial-section h2 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary-color);
+        }
+        
+        .tutorial-section h3 {
+            font-size: 1.4rem;
+            color: var(--dark-color);
+            margin: 30px 0 15px;
+        }
+        
+        .code-block {
+            background-color: #f5f5f5;
+            border-left: 4px solid var(--secondary-color);
+            padding: 15px;
+            margin: 20px 0;
+            overflow-x: auto;
+            font-family: var(--font-code);
+        }
+        
+        .warning-box {
+            background-color: #fff3e0;
+            border-left: 4px solid #ffa000;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+        .info-box {
+            background-color: #e3f2fd;
+            border-left: 4px solid var(--secondary-color);
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .practice-resources {
+            background-color: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 40px 0;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+        }
+        
+        .nav-button {
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="../images/logo.png" alt="zeroX Logo" class="logo">
+            <span class="brand-name">zeroX</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../about.html">About</a></li>
+            <li><a href="../services.html">Services</a></li>
+            <li><a href="../team.html">Team</a></li>
+            <li><a href="sql-injection.html">Tutorials</a></li>
+            <li><a href="../news.html">News</a></li>
+            <li><a href="../events.html">Events</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+            <li><a href="../login.html" class="login-btn">Login</a></li>
+        </ul>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+
+    <!-- Tutorial Content -->
+    <main class="tutorial-content">
+        <header class="tutorial-header">
+            <h1>SQL Injection (SQLi)</h1>
+            <div class="meta">
+                <span><i class="fas fa-clock"></i> 15 min read</span>
+                <span><i class="fas fa-level-up-alt"></i> Beginner</span>
+                <span><i class="fas fa-calendar-alt"></i> Updated: June 2025</span>
+            </div>
+        </header>
+        
+        <section class="tutorial-section">
+            <h2>🔐 What is SQL Injection?</h2>
+            <p><strong>SQL Injection</strong> is a web security vulnerability that allows an attacker to interfere with the queries an application makes to its database. It can allow attackers to view data they're not supposed to access, and in severe cases, modify or delete that data.</p>
+            
+            <div class="info-box">
+                <p><strong>💡 Did you know?</strong> SQL injection has been consistently ranked as one of the top web application vulnerabilities in the OWASP Top 10 for over a decade.</p>
+            </div>
+        </section>
+        
+        <section class="tutorial-section">
+            <h2>🧠 How It Works</h2>
+            <p>Web applications often use SQL queries to communicate with databases. If the input fields (like login forms or search boxes) are not properly sanitized, attackers can inject SQL code to manipulate the database.</p>
+            
+            <div class="code-block">
+                <pre><code>SELECT * FROM users WHERE username = '[user_input]' AND password = '[user_input]'</code></pre>
+            </div>
+            
+            <p>If the application doesn't sanitize input, an attacker can input something like <code>' OR '1'='1</code> which would make the query:</p>
+            
+            <div class="code-block">
+                <pre><code>SELECT * FROM users WHERE username = '' OR '1'='1' AND password = '' OR '1'='1'</code></pre>
+            </div>
+            
+            <p>This would return all users in the database because <code>'1'='1'</code> is always true.</p>
+        </section>
+        
+        <section class="tutorial-section">
+            <h2>🧪 Example Vulnerable Code (PHP + MySQL)</h2>
+            
+            <div class="code-block">
+                <pre><code>&lt;?php
+$username = $_GET['username'];
+$query = "SELECT * FROM users WHERE username = '$username'";
+$result = mysqli_query($conn, $query);
+?&gt;</code></pre>
+            </div>
+            
+            <p>If an attacker enters:</p>
+            
+            <div class="code-block">
+                <pre><code>admin' -- </code></pre>
+            </div>
+            
+            <p>The query becomes:</p>
+            
+            <div class="code-block">
+                <pre><code>SELECT * FROM users WHERE username = 'admin' --';</code></pre>
+            </div>
+            
+            <p>The <code>--</code> comments out the rest of the query, allowing the attacker to log in as admin without a password.</p>
+        </section>
+        
+        <section class="tutorial-section">
+            <h2>🚨 What Can Attackers Do?</h2>
+            <ul>
+                <li><strong>Bypass authentication</strong> to gain unauthorized access</li>
+                <li><strong>Extract sensitive data</strong> like usernames, passwords, credit card info</li>
+                <li><strong>Modify or delete database records</strong> causing data loss</li>
+                <li><strong>Execute administrative operations</strong> on the database</li>
+                <li><strong>In some cases, gain remote code execution</strong> on the server</li>
+            </ul>
+            
+            <div class="warning-box">
+                <p><strong>⚠️ Real-world impact:</strong> SQL injection was responsible for some of the largest data breaches in history, including the 2011 Sony Pictures hack that exposed over 77 million user records.</p>
+            </div>
+        </section>
+        
+        <section class="tutorial-section">
+            <h2>🔧 Common Payloads</h2>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Payload</th>
+                            <th>Purpose</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Bypass Login</td>
+                            <td><code>' OR '1'='1</code></td>
+                            <td>Bypass authentication</td>
+                        </tr>
+                        <tr>
+                            <td>Union-Based</td>
+                            <td><code>' UNION SELECT null, version()-- </code></td>
+                            <td>Extract database information</td>
+                        </tr>
+                        <tr>
+                            <td>Error-Based</td>
+                            <td><code>' AND 1=CONVERT(int, (SELECT @@version))--</code></td>
+                            <td>Force error messages to reveal info</td>
+                        </tr>
+                        <tr>
+                            <td>Blind SQLi</td>
+                            <td><code>' AND 1=1 --</code> and <code>' AND 1=2 --</code></td>
+                            <td>Test for blind injection vulnerabilities</td>
+                        </tr>
+                        <tr>
+                            <td>Time-Based</td>
+                            <td><code>'; IF (1=1) WAITFOR DELAY '0:0:5'--</code></td>
+                            <td>Test for time-based blind SQLi</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
+        <section class="tutorial-section">
+            <h2>✅ How to Prevent SQL Injection</h2>
+            
+            <h3>1. Use Prepared Statements (Parameterized Queries)</h3>
+            <p>This is the most effective defense. The SQL query is precompiled with placeholders, and user input is treated strictly as data.</p>
+            
+            <div class="code-block">
+                <pre><code>// PHP example with MySQLi
+$stmt = $conn->prepare("SELECT * FROM users WHERE username = ?");
+$stmt->bind_param("s", $username);
+$stmt->execute();</code></pre>
+            </div>
+            
+            <h3>2. Use Stored Procedures</h3>
+            <p>Define SQL queries in the database and call them from the application.</p>
+            
+            <h3>3. Input Validation & Whitelisting</h3>
+            <p>Validate input against a strict set of rules (e.g., only alphanumeric for usernames).</p>
+            
+            <h3>4. Escaping User Input</h3>
+            <p>Use database-specific escaping functions (though this is less secure than prepared statements).</p>
+            
+            <div class="code-block">
+                <pre><code>// PHP example
+$username = mysqli_real_escape_string($conn, $_GET['username']);</code></pre>
+            </div>
+            
+            <h3>5. Principle of Least Privilege</h3>
+            <p>Database accounts used by applications should have the minimum permissions needed.</p>
+            
+            <h3>6. Web Application Firewall (WAF)</h3>
+            <p>Can help block SQL injection attempts, though shouldn't be the only defense.</p>
+            
+            <div class="info-box">
+                <p><strong>🔒 Best Practice:</strong> Always use parameterized queries (prepared statements) whenever possible. Input validation and escaping should be additional layers of defense, not the primary protection.</p>
+            </div>
+        </section>
+        
+        <section class="practice-resources">
+            <h2>🛠️ Practice Sites (For Legal Use)</h2>
+            <ul>
+                <li><a href="https://portswigger.net/web-security/sql-injection" target="_blank">PortSwigger SQL Injection Labs</a> - Interactive tutorials</li>
+                <li><a href="https://www.hackthebox.com" target="_blank">Hack The Box</a> - Contains SQL injection challenges</li>
+                <li><a href="https://tryhackme.com" target="_blank">TryHackMe</a> - Beginner-friendly rooms with SQLi</li>
+                <li><a href="https://github.com/owasp/vulnerable-web-app" target="_blank">OWASP Vulnerable Web App</a> - For local practice</li>
+            </ul>
+        </section>
+        
+        <section class="tutorial-section">
+            <h2>📌 Final Thoughts</h2>
+            <p>SQL Injection is still one of the <strong>most dangerous web vulnerabilities</strong> despite being well-understood. Understanding it deeply helps you both in defense (cybersecurity) and offense (ethical hacking).</p>
+            
+            <p>As a developer, always use parameterized queries. As a security professional, always test for SQL injection during security assessments.</p>
+        </section>
+        
+        <div class="nav-buttons">
+            <a href="../tutorials.html" class="nav-button"><i class="fas fa-arrow-left"></i> All Tutorials</a>
+            <a href="xss.html" class="nav-button">Next: XSS Attacks <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section about">
+                <img src="../images/logo.png" alt="zeroX Logo" class="footer-logo">
+                <p>zeroX is a collective of ethical hackers and cybersecurity advocates committed to defending the digital frontier.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                </div>
+            </div>
+            <div class="footer-section links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="../about.html">About Us</a></li>
+                    <li><a href="../services.html">Services</a></li>
+                    <li><a href="../team.html">Our Team</a></li>
+                    <li><a href="sql-injection.html">Tutorials</a></li>
+                    <li><a href="../news.html">News</a></li>
+                </ul>
+            </div>
+            <div class="footer-section contact">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-envelope"></i> teat01@gmail.com</p>
+                <p><i class="fab fa-telegram"></i> @phazto</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 zeroX. All rights reserved.</p>
+            <div class="footer-legal">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Ethical Guidelines</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

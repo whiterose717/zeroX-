@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wireshark Tutorial | zeroX</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="../images/logo.png" type="image/png">
+    <style>
+        /* Same style block as in sql-injection.html */
+    </style>
+</head>
+<body>
+    <!-- Navigation (same as sql-injection.html) -->
+
+    <main class="tutorial-content">
+        <header class="tutorial-header">
+            <h1>Wireshark: Network Protocol Analysis</h1>
+            <div class="meta">
+                <span><i class="fas fa-clock"></i> 15 min read</span>
+                <span><i class="fas fa-level-up-alt"></i> Beginner</span>
+                <span><i class="fas fa-calendar-alt"></i> Updated: June 2025</span>
+            </div>
+        </header>
+        
+        <section class="tutorial-section">
+            <h2>📡 What is Wireshark?</h2>
+            <p><strong>Wireshark</strong> is a free and open-source packet analyzer used for network troubleshooting, analysis, software and communications protocol development, and education.</p>
+            
+            <div class="info-box">
+                <p><strong>💡 Did you know?</strong> Wireshark was originally named Ethereal before being renamed in 2006.</p>
+            </div>
+        </section>
+        
+        <section class="tutorial-section">
+            <h2>🧠 Key Features</h2>
+            <ul>
+                <li>Deep inspection of hundreds of protocols</li>
+                <li>Live capture and offline analysis</li>
+                <li>Rich VoIP analysis</li>
+                <li>Powerful display filters</li>
+                <li>Multi-platform (Windows, Linux, macOS)</li>
+            </ul>
+        </section>
+        
+        <section class="tutorial-section">
+            <h2>🧪 Basic Usage</h2>
+            
+            <h3>1. Starting a Capture</h3>
+            <p>Select the network interface and click the shark fin icon.</p>
+            
+            <h3>2. Applying Filters</h3>
+            <div class="code-block">
+                <pre><code># Show only HTTP traffic
+http
+
+# Show traffic to/from an IP
+ip.addr == 192.168.1.1
+
+# Show DNS queries
+dns</code></pre>
+            </div>
+            
+            <h3>3. Following TCP Streams</h3>
+            <p>Right-click on a packet → Follow → TCP Stream</p>
+        </section>
+        
+        <section class="tutorial-section">
+            <h2>🚨 Common Protocols</h2>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Protocol</th>
+                            <th>Filter</th>
+                            <th>Purpose</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>HTTP</td>
+                            <td><code>http</code></td>
+                            <td>Web traffic</td>
+                        </tr>
+                        <tr>
+                            <td>DNS</td>
+                            <td><code>dns</code></td>
+                            <td>Domain resolution</td>
+                        </tr>
+                        <tr>
+                            <td>TCP</td>
+                            <td><code>tcp</code></td>
+                            <td>Reliable connections</td>
+                        </tr>
+                        <tr>
+                            <td>UDP</td>
+                            <td><code>udp</code></td>
+                            <td>Fast connections</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
+        <section class="tutorial-section">
+            <h2>✅ Security Analysis</h2>
+            <p>Wireshark can help identify security issues:</p>
+            <ul>
+                <li>Unencrypted credentials (HTTP basic auth)</li>
+                <li>Suspicious traffic patterns</li>
+                <li>Malware communications</li>
+                <li>Port scanning activity</li>
+            </ul>
+            
+            <div class="warning-box">
+                <p><strong>⚠️ Legal Note:</strong> Only capture traffic on networks you own or have permission to monitor. Capturing traffic without authorization may violate privacy laws.</p>
+            </div>
+        </section>
+        
+        <section class="practice-resources">
+            <h2>🛠️ Practice Resources</h2>
+            <ul>
+                <li><a href="https://www.wireshark.org" target="_blank">Official Wireshark Site</a></li>
+                <li><a href="https://wiki.wireshark.org/SampleCaptures" target="_blank">Sample Captures</a></li>
+                <li><a href="https://www.cloudshark.org" target="_blank">CloudShark</a> (online analysis)</li>
+            </ul>
+        </section>
+        
+        <div class="nav-buttons">
+            <a href="osint.html" class="nav-button"><i class="fas fa-arrow-left"></i> OSINT</a>
+            <a href="../tutorials.html" class="nav-button">All Tutorials <i class="fas fa-list"></i></a>
+        </div>
+    </main>
+
+    <!-- Footer (same as sql-injection.html) -->
+</body>
+</html>

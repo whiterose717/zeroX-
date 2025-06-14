@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XSS Tutorial | zeroX</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="../images/logo.png" type="image/png">
+    <style>
+        /* Same style block as in sql-injection.html */
+    </style>
+</head>
+<body>
+    <!-- Navigation (same as sql-injection.html) -->
+
+    <main class="tutorial-content">
+        <header class="tutorial-header">
+            <h1>Cross-Site Scripting (XSS)</h1>
+            <div class="meta">
+                <span><i class="fas fa-clock"></i> 12 min read</span>
+                <span><i class="fas fa-level-up-alt"></i> Beginner</span>
+                <span><i class="fas fa-calendar-alt"></i> Updated: June 2025</span>
+            </div>
+        </header>
+        
+        <section class="tutorial-section">
+            <h2>🔐 What is XSS?</h2>
+            <p><strong>Cross-Site Scripting (XSS)</strong> is a web security vulnerability that allows attackers to inject malicious scripts into web pages viewed by other users. Unlike SQL injection which targets the server, XSS exploits trust in the user's browser.</p>
+            
+            <div class="info-box">
+                <p><strong>💡 Did you know?</strong> XSS accounts for approximately 40% of all web application vulnerabilities reported in recent years.</p>
+            </div>
+        </section>
+        
+        <section class="tutorial-section">
+            <h2>🧠 How It Works</h2>
+            <p>XSS occurs when a web application includes untrusted data without proper validation or escaping, allowing attackers to execute scripts in the victim's browser.</p>
+            
+            <div class="code-block">
+                <pre><code>&lt;div&gt;User comment: [user_input]&lt;/div&gt;</code></pre>
+            </div>
+            
+            <p>If the application doesn't sanitize input, an attacker could input:</p>
+            
+            <div class="code-block">
+                <pre><code>&lt;script&gt;alert('XSS')&lt;/script&gt;</code></pre>
+            </div>
+            
+            <p>Which would render as:</p>
+            
+            <div class="code-block">
+                <pre><code>&lt;div&gt;User comment: &lt;script&gt;alert('XSS')&lt;/script&gt;&lt;/div&gt;</code></pre>
+            </div>
+        </section>
+        
+        <section class="tutorial-section">
+            <h2>🧪 Example Vulnerable Code</h2>
+            
+            <div class="code-block">
+                <pre><code>&lt;?php
+$comment = $_GET['comment'];
+echo "&lt;div&gt;User comment: " . $comment . "&lt;/div&gt;";
+?&gt;</code></pre>
+            </div>
+            
+            <p>This code directly outputs user input without sanitization, making it vulnerable to XSS.</p>
+        </section>
+        
+        <section class="tutorial-section">
+            <h2>🚨 Types of XSS</h2>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Description</th>
+                            <th>Impact</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Reflected XSS</td>
+                            <td>Malicious script comes from the current HTTP request</td>
+                            <td>Often used in phishing attacks</td>
+                        </tr>
+                        <tr>
+                            <td>Stored XSS</td>
+                            <td>Malicious script is stored on the server</td>
+                            <td>Affects all users viewing the page</td>
+                        </tr>
+                        <tr>
+                            <td>DOM-based XSS</td>
+                            <td>Vulnerability exists in client-side code</td>
+                            <td>Doesn't reach the server</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
+        <section class="tutorial-section">
+            <h2>✅ How to Prevent XSS</h2>
+            
+            <h3>1. Input Validation</h3>
+            <p>Validate input against a whitelist of allowed characters.</p>
+            
+            <h3>2. Output Encoding</h3>
+            <p>Encode data before outputting it to the browser.</p>
+            
+            <div class="code-block">
+                <pre><code>// PHP example
+echo "&lt;div&gt;" . htmlspecialchars($comment, ENT_QUOTES, 'UTF-8') . "&lt;/div&gt;";</code></pre>
+            </div>
+            
+            <h3>3. Content Security Policy (CSP)</h3>
+            <p>Implement CSP headers to restrict script sources.</p>
+            
+            <h3>4. Use Secure Frameworks</h3>
+            <p>Modern frameworks like React automatically escape content.</p>
+            
+            <div class="warning-box">
+                <p><strong>⚠️ Real-world impact:</strong> XSS vulnerabilities have been used to steal session cookies, deface websites, and even deliver malware to unsuspecting users.</p>
+            </div>
+        </section>
+        
+        <section class="practice-resources">
+            <h2>🛠️ Practice Sites</h2>
+            <ul>
+                <li><a href="https://xss-game.appspot.com" target="_blank">Google XSS Game</a></li>
+                <li><a href="https://portswigger.net/web-security/cross-site-scripting" target="_blank">PortSwigger XSS Labs</a></li>
+                <li><a href="https://www.hackthissite.org" target="_blank">HackThisSite</a></li>
+            </ul>
+        </section>
+        
+        <div class="nav-buttons">
+            <a href="sql-injection.html" class="nav-button"><i class="fas fa-arrow-left"></i> SQL Injection</a>
+            <a href="metasploit.html" class="nav-button">Next: Metasploit <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </main>
+
+    <!-- Footer (same as sql-injection.html) -->
+</body>
+</html>

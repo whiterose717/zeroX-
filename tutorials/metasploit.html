@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metasploit Tutorial | zeroX</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="../images/logo.png" type="image/png">
+    <style>
+        /* Same style block as in sql-injection.html */
+    </style>
+</head>
+<body>
+    <!-- Navigation (same as sql-injection.html) -->
+
+    <main class="tutorial-content">
+        <header class="tutorial-header">
+            <h1>Metasploit Framework</h1>
+            <div class="meta">
+                <span><i class="fas fa-clock"></i> 20 min read</span>
+                <span><i class="fas fa-level-up-alt"></i> Intermediate</span>
+                <span><i class="fas fa-calendar-alt"></i> Updated: June 2025</span>
+            </div>
+        </header>
+        
+        <section class="tutorial-section">
+            <h2>🔧 What is Metasploit?</h2>
+            <p><strong>Metasploit Framework</strong> is an open-source penetration testing platform that provides information about security vulnerabilities and aids in penetration testing and IDS signature development.</p>
+            
+            <div class="info-box">
+                <p><strong>💡 Did you know?</strong> Metasploit was originally created by H.D. Moore in 2003 and was later acquired by Rapid7 in 2009.</p>
+            </div>
+        </section>
+        
+        <section class="tutorial-section">
+            <h2>🧠 Core Components</h2>
+            <ul>
+                <li><strong>Exploits:</strong> Pieces of code that use vulnerabilities</li>
+                <li><strong>Payloads:</strong> Code that runs after successful exploitation</li>
+                <li><strong>Auxiliary Modules:</strong> Scanning, fuzzing, and other tools</li>
+                <li><strong>Encoders:</strong> Used to evade detection</li>
+                <li><strong>Post-Exploitation Modules:</strong> For maintaining access</li>
+            </ul>
+        </section>
+        
+        <section class="tutorial-section">
+            <h2>🧪 Basic Workflow</h2>
+            
+            <div class="code-block">
+                <pre><code>msf6 > search [vulnerability]
+msf6 > use [exploit_path]
+msf6 > show options
+msf6 > set RHOSTS [target_ip]
+msf6 > set PAYLOAD [payload]
+msf6 > exploit</code></pre>
+            </div>
+        </section>
+        
+        <section class="tutorial-section">
+            <h2>🚨 Common Commands</h2>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Command</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>search</code></td>
+                            <td>Find modules for a specific vulnerability</td>
+                        </tr>
+                        <tr>
+                            <td><code>use</code></td>
+                            <td>Select a module to use</td>
+                        </tr>
+                        <tr>
+                            <td><code>show options</code></td>
+                            <td>Display configurable options</td>
+                        </tr>
+                        <tr>
+                            <td><code>set</code></td>
+                            <td>Configure an option</td>
+                        </tr>
+                        <tr>
+                            <td><code>exploit</code></td>
+                            <td>Run the selected module</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
+        <section class="tutorial-section">
+            <h2>✅ Ethical Considerations</h2>
+            <p>Metasploit is a powerful tool that must be used responsibly:</p>
+            <ul>
+                <li>Only test systems you own or have permission to test</li>
+                <li>Document all testing activities</li>
+                <li>Understand the potential impact before running exploits</li>
+                <li>Use in controlled environments for learning</li>
+            </ul>
+            
+            <div class="warning-box">
+                <p><strong>⚠️ Warning:</strong> Unauthorized use of Metasploit against systems you don't own is illegal in most jurisdictions.</p>
+            </div>
+        </section>
+        
+        <section class="practice-resources">
+            <h2>🛠️ Practice Resources</h2>
+            <ul>
+                <li><a href="https://www.metasploit.com" target="_blank">Official Metasploit Site</a></li>
+                <li><a href="https://www.offensive-security.com/metasploit-unleashed/" target="_blank">Metasploit Unleashed</a></li>
+                <li><a href="https://tryhackme.com" target="_blank">TryHackMe Metasploit Rooms</a></li>
+            </ul>
+        </section>
+        
+        <div class="nav-buttons">
+            <a href="xss.html" class="nav-button"><i class="fas fa-arrow-left"></i> XSS</a>
+            <a href="osint.html" class="nav-button">Next: OSINT <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </main>
+
+    <!-- Footer (same as sql-injection.html) -->
+</body>
+</html>
