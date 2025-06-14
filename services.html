@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | zeroX</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <style>
+        .services-hero {
+            background: linear-gradient(135deg, #009ffd 0%, #2a2a72 100%);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+        }
+        
+        .services-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .services-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        .service-detail {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: 60px;
+            gap: 40px;
+        }
+        
+        .service-detail:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .service-image {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .service-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .service-features {
+            margin-top: 20px;
+        }
+        
+        .service-features li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .service-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+        
+        .pricing-section {
+            background-color: #f8f9fa;
+            padding: 60px 20px;
+            margin: 60px 0;
+        }
+        
+        .pricing-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .pricing-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            flex: 1;
+            min-width: 300px;
+            max-width: 350px;
+        }
+        
+        .pricing-card.popular {
+            border: 2px solid var(--secondary-color);
+            position: relative;
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 20px 0;
+            color: var(--primary-color);
+        }
+        
+        .price span {
+            font-size: 1rem;
+            color: #666;
+        }
+        
+        .pricing-features {
+            margin: 30px 0;
+        }
+        
+        .pricing-features li {
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cta-section {
+            text-align: center;
+            padding: 60px 20px;
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .cta-section h2 {
+            margin-bottom: 20px;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .cta-button {
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .primary {
+            background-color: white;
+            color: var(--primary-color);
+        }
+        
+        .secondary {
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+        
+        .primary:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="images/logo.png" alt="zeroX Logo" class="logo">
+            <span class="brand-name">zeroX</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="tutorials/sql-injection.html">Tutorials</a></li>
+            <li><a href="news.html">News</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="login.html" class="login-btn">Login</a></li>
+        </ul>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="services-hero">
+        <h1>Our Cybersecurity Services</h1>
+        <p>Comprehensive security solutions to protect your digital assets</p>
+    </section>
+
+    <!-- Services Details -->
+    <main class="services-container">
+        <section class="service-detail">
+            <div class="service-image">
+                <img src="https://via.placeholder.com/600x400?text=Pentesting" alt="Penetration Testing">
+            </div>
+            <div class="service-text">
+                <h2>Penetration Testing</h2>
+                <p>Our ethical hackers simulate real-world attacks to identify vulnerabilities in your systems before malicious actors can exploit them.</p>
+                <ul class="service-features">
+                    <li>Comprehensive testing of web, mobile, and network applications</li>
+                    <li>Black-box, white-box, and gray-box testing methodologies</li>
+                    <li>Detailed reports with risk ratings and remediation guidance</li>
+                    <li>Follow-up testing to verify fixes</li>
+                </ul>
+                <a href="contact.html" class="btn-primary">Request Assessment</a>
+            </div>
+        </section>
+
+        <section class="service-detail">
+            <div class="service-image">
+                <img src="https://via.placeholder.com/600x400?text=Vulnerability" alt="Vulnerability Assessment">
+            </div>
+            <div class="service-text">
+                <h2>Vulnerability Assessment</h2>
+                <p>Systematic review of security weaknesses in your systems with prioritization based on risk level.</p>
+                <ul class="service-features">
+                    <li>Automated scanning combined with manual verification</li>
+                    <li>Coverage for OWASP Top 10 and other critical vulnerabilities</li>
+                    <li>Customized scanning profiles for your technology stack</li>
+                    <li>Integration with development workflows</li>
+                </ul>
+                <a href="contact.html" class="btn-primary">Learn More</a>
+            </div>
+        </section>
+
+        <section class="service-detail">
+            <div class="service-image">
+                <img src="https://via.placeholder.com/600x400?text=Training" alt="Security Training">
+            </div>
+            <div class="service-text">
+                <h2>Security Awareness Training</h2>
+                <p>Educate your team to recognize and resist social engineering and other security threats.</p>
+                <ul class="service-features">
+                    <li>Customized training programs for different roles</li>
+                    <li>Phishing simulation exercises</li>
+                    <li>Interactive workshops and hands-on labs</li>
+                    <li>Regular security awareness updates</li>
+                </ul>
+                <a href="contact.html" class="btn-primary">Schedule Training</a>
+            </div>
+        </section>
+
+        <section class="service-detail">
+            <div class="service-image">
+                <img src="https://via.placeholder.com/600x400?text=Incident" alt="Incident Response">
+            </div>
+            <div class="service-text">
+                <h2>Incident Response</h2>
+                <p>24/7 support to contain, investigate, and recover from security breaches.</p>
+                <ul class="service-features">
+                    <li>Emergency response team available 24/7</li>
+                    <li>Forensic analysis and breach investigation</li>
+                    <li>Containment and eradication strategies</li>
+                    <li>Post-incident reporting and lessons learned</li>
+                </ul>
+                <a href="contact.html" class="btn-primary">Get Response Plan</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section">
+        <div class="services-container">
+            <h2 style="text-align: center; margin-bottom: 40px;">Service Packages</h2>
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <h3>Basic Assessment</h3>
+                    <p>Ideal for small businesses and startups</p>
+                    <div class="price">$2,500 <span>/ assessment</span></div>
+                    <ul class="pricing-features">
+                        <li>Single application testing</li>
+                        <li>Automated vulnerability scanning</li>
+                        <li>Executive summary report</li>
+                        <li>5 critical vulnerabilities fixed</li>
+                        <li>1 week turnaround</li>
+                    </ul>
+                    <a href="contact.html" class="btn-secondary">Get Started</a>
+                </div>
+                
+                <div class="pricing-card popular">
+                    <div class="popular-badge">MOST POPULAR</div>
+                    <h3>Professional Package</h3>
+                    <p>Comprehensive security for growing businesses</p>
+                    <div class="price">$8,000 <span>/ quarter</span></div>
+                    <ul class="pricing-features">
+                        <li>3 applications or systems</li>
+                        <li>Manual penetration testing</li>
+                        <li>Detailed technical report</li>
+                        <li>Unlimited vulnerabilities fixed</li>
+                        <li>Quarterly assessments</li>
+                        <li>24/7 monitoring alerts</li>
+                    </ul>
+                    <a href="contact.html" class="btn-primary">Get Started</a>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Enterprise Suite</h3>
+                    <p>Complete security solution for large organizations</p>
+                    <div class="price">$25,000 <span>/ year</span></div>
+                    <ul class="pricing-features">
+                        <li>Unlimited applications</li>
+                        <li>Red team exercises</li>
+                        <li>Custom security training</li>
+                        <li>Dedicated security consultant</li>
+                        <li>Priority incident response</li>
+                        <li>Compliance support</li>
+                    </ul>
+                    <a href="contact.html" class="btn-secondary">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Ready to Secure Your Digital Assets?</h2>
+        <p>Contact us for a free consultation and quote tailored to your specific security needs.</p>
+        <div class="cta-buttons">
+            <a href="contact.html" class="cta-button primary">Get Free Consultation</a>
+            <a href="tel:+1234567890" class="cta-button secondary">Call Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section about">
+                <img src="images/logo.png" alt="zeroX Logo" class="footer-logo">
+                <p>zeroX is a collective of ethical hackers and cybersecurity advocates committed to defending the digital frontier.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                </div>
+            </div>
+            <div class="footer-section links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="team.html">Our Team</a></li>
+                    <li><a href="tutorials/sql-injection.html">Tutorials</a></li>
+                </ul>
+            </div>
+            <div class="footer-section contact">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-envelope"></i> teat01@gmail.com</p>
+                <p><i class="fab fa-telegram"></i> @phazto</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 zeroX. All rights reserved.</p>
+            <div class="footer-legal">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Ethical Guidelines</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

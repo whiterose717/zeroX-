@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cybersecurity News | zeroX</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" href="images/logo.png" type="image/png">
+  <style>
+    /* ===== CSS from index.html (cyber style) added here ===== */
+    :root {
+      --primary: #00d8ff;
+      --secondary: #00ff9d;
+      --dark: #0a192f;
+      --darker: #020c1b;
+      --light: #e6f1ff;
+      --border: #1e2a3a;
+      --code: #00ff9d;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Courier New', monospace; }
+    body {
+      background-color: var(--dark);
+      color: var(--light);
+      line-height: 1.6;
+      background-image: linear-gradient(rgba(0, 216, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 216, 255, 0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
+    .navbar {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px; background: var(--darker);
+      position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--border);
+    }
+    .logo-container { display: flex; align-items: center; gap: 10px; }
+    .logo { width: 40px; filter: drop-shadow(0 0 5px var(--primary)); }
+    .brand-name { font-size: 1.5rem; font-weight: bold; color: var(--primary); }
+    .nav-links { display: flex; gap: 20px; }
+    .nav-links a:hover { color: var(--secondary); text-shadow: 0 0 8px var(--primary); }
+    .login-btn {
+      padding: 8px 15px; border: 1px solid var(--primary); border-radius: 4px; color: var(--primary);
+    }
+    .login-btn:hover { background: var(--primary); color: var(--dark); }
+    .news-hero {
+      background: linear-gradient(135deg, #2a2a72 0%, #ffa400 100%);
+      color: white; padding: 100px 20px; text-align: center;
+    }
+    .news-hero h1 { font-size: 3rem; margin-bottom: 20px; }
+    .news-container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
+    .news-filters { display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 40px; justify-content: center; }
+    .filter-btn {
+      padding: 8px 20px; background: #112240; border: none;
+      border-radius: 20px; cursor: pointer; color: var(--light);
+    }
+    .filter-btn.active, .filter-btn:hover { background: var(--primary); color: var(--dark); }
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 30px;
+    }
+    .news-card {
+      background: #112240;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(0, 216, 255, 0.1);
+    }
+    .news-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 216, 255, 0.1);
+    }
+    .news-image {
+      height: 200px;
+      background-size: cover;
+      background-position: center;
+    }
+    .news-content { padding: 20px; }
+    .news-meta {
+      display: flex; justify-content: space-between;
+      margin-bottom: 10px; font-size: 0.9rem; color: var(--light);
+    }
+    .news-category { color: var(--secondary); font-weight: 600; }
+    .news-title {
+      font-size: 1.3rem; margin-bottom: 10px;
+      color: var(--light);
+    }
+    .news-excerpt { color: #aab5cf; margin-bottom: 15px; }
+    .read-more {
+      color: var(--primary);
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+    }
+    .read-more i {
+      margin-left: 5px;
+      transition: transform 0.3s ease;
+    }
+    .read-more:hover i {
+      transform: translateX(5px);
+    }
+    .footer {
+      background: var(--darker);
+      color: var(--light);
+      padding: 40px 20px 20px;
+      margin-top: 60px;
+    }
+    .footer-content {
+      display: flex; flex-wrap: wrap; justify-content: space-between;
+      gap: 30px;
+    }
+    .footer-logo { width: 50px; filter: drop-shadow(0 0 5px var(--primary)); }
+    .footer-section h3 { margin-bottom: 10px; color: var(--primary); }
+    .footer-section p, .footer-section a { font-size: 0.9rem; color: var(--light); }
+    .footer-section a:hover { color: var(--primary); }
+    .social-icons a {
+      display: inline-block; margin-right: 10px;
+      color: var(--primary);
+    }
+    .footer-bottom {
+      text-align: center;
+      border-top: 1px solid var(--border);
+      padding-top: 10px; font-size: 0.8rem;
+    }
+    .footer-legal a {
+      margin: 0 10px;
+      color: var(--light);
+      font-size: 0.8rem;
+    }
+    .footer-legal a:hover { color: var(--primary); }
+    .modal {
+      display: none; position: fixed; top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(2, 12, 27, 0.9);
+      z-index: 1000;
+      align-items: center; justify-content: center;
+    }
+    .modal-content {
+      background: #112240;
+      padding: 40px; border-radius: 8px; max-width: 500px; width: 90%;
+      border-top: 4px solid var(--primary);
+    }
+    .modal-header h2 { color: var(--primary); margin-bottom: 10px; }
+    .verification-box {
+      background: rgba(0, 216, 255, 0.05);
+      padding: 20px; margin-bottom: 20px;
+      font-family: 'Courier New', monospace;
+      color: var(--code);
+    }
+    .verification-input {
+      width: 100%; padding: 12px;
+      background: rgba(0, 216, 255, 0.05);
+      border: 1px solid rgba(0, 216, 255, 0.3);
+      color: var(--light); margin-bottom: 20px;
+    }
+    .modal-buttons { display: flex; gap: 15px; justify-content: center; }
+    .btn-solid, .btn-outline {
+      padding: 10px 20px; border-radius: 4px; cursor: pointer;
+    }
+    .btn-solid {
+      background: var(--primary); color: var(--dark); border: none;
+    }
+    .btn-outline {
+      background: transparent; border: 1px solid var(--primary); color: var(--primary);
+    }
+    .btn-outline:hover { background: var(--primary); color: var(--dark); }
+    canvas#matrix-rain {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      z-index: -1; opacity: 0.1;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="matrix-rain"></canvas>
+
+  <!-- Navigation and content same as your original, inserted here -->
+  <!-- Keep rest of your <body> code unchanged -->
+
+  <!-- Verification Modal -->
+  <div class="modal" id="verification-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>SECURITY VERIFICATION</h2>
+        <p>Please complete this security check to continue</p>
+      </div>
+      <div class="verification-box">
+        > Security verification required<br/>
+        > Please enter the code below:<br/><br/>
+        VERIFICATION CODE: <strong>X9K4L2</strong>
+      </div>
+      <input type="text" class="verification-input" placeholder="Enter verification code..." />
+      <div class="modal-buttons">
+        <button class="btn-solid" id="verify-btn">VERIFY</button>
+        <button class="btn-outline" id="cancel-btn">CANCEL</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Matrix and Modal Scripts -->
+  <script>
+    const canvas = document.getElementById('matrix-rain');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    const chars = '01ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    const fontSize = 16;
+    const columns = canvas.width / fontSize;
+    const drops = Array.from({ length: columns }).fill(1);
+    function draw() {
+      ctx.fillStyle = 'rgba(10,25,47,0.05)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#00d8ff';
+      ctx.font = fontSize + 'px monospace';
+      drops.forEach((y, i) => {
+        const text = chars[Math.floor(Math.random() * chars.length)];
+        ctx.fillText(text, i * fontSize, y * fontSize);
+        if (y * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+        drops[i]++;
+      });
+    }
+    setInterval(draw, 30);
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+    setTimeout(() => {
+      document.getElementById('verification-modal').style.display = 'flex';
+    }, 15000);
+    document.getElementById('cancel-btn').onclick = () => {
+      document.getElementById('verification-modal').style.display = 'none';
+    };
+    document.getElementById('verify-btn').onclick = () => {
+      document.getElementById('verification-modal').style.display = 'none';
+    };
+  </script>
+</body>
+</html>

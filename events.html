@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events | zeroX Cybersecurity</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <style>
+        :root {
+            --primary: #00d8ff;
+            --secondary: #00ff9d;
+            --dark: #0a192f;
+            --darker: #020c1b;
+            --light: #e6f1ff;
+            --border: #1e2a3a;
+            --code: #00ff9d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Courier New', monospace;
+        }
+
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+            background-image: 
+                linear-gradient(rgba(0, 216, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 216, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--darker);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+            box-shadow: 0 0 15px rgba(0, 216, 255, 0.1);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 40px;
+            filter: drop-shadow(0 0 5px var(--primary));
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-shadow: 0 0 10px rgba(0, 216, 255, 0.5);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--light);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+            text-shadow: 0 0 8px var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+            box-shadow: 0 0 5px var(--primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .btn-outline {
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: rgba(0, 216, 255, 0.1);
+        }
+
+        .btn-solid {
+            background: var(--primary);
+            color: var(--darker);
+            font-weight: 600;
+        }
+
+        .btn-solid:hover {
+            background: #00c4e8;
+            box-shadow: 0 0 15px rgba(0, 216, 255, 0.5);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(10, 25, 47, 0.9), rgba(10, 25, 47, 0.9)), 
+                        url('images/matrix-bg.jpg') no-repeat center/cover;
+            padding: 120px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            color: var(--primary);
+            text-shadow: 0 0 15px rgba(0, 216, 255, 0.5);
+            margin-bottom: 20px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--light);
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        /* Events Section */
+        .events-section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.2rem;
+            color: var(--primary);
+            text-transform: uppercase;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background: var(--primary);
+            margin: 15px auto 0;
+            box-shadow: 0 0 10px var(--primary);
+        }
+
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .event-card {
+            background: rgba(2, 12, 27, 0.7);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 216, 255, 0.1);
+            transition: all 0.3s;
+            backdrop-filter: blur(5px);
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 216, 255, 0.1);
+            border-color: var(--primary);
+        }
+
+        .event-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .event-img::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 60%, var(--darker));
+        }
+
+        .event-date {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(0, 216, 255, 0.2);
+            padding: 5px 10px;
+            border-radius: 4px;
+            color: var(--primary);
+            font-weight: 600;
+            z-index: 1;
+        }
+
+        .event-content {
+            padding: 25px;
+        }
+
+        .event-content h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+        }
+
+        .event-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            color: var(--light);
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        .event-meta i {
+            color: var(--primary);
+            margin-right: 5px;
+        }
+
+        .event-content p {
+            color: var(--light);
+            opacity: 0.8;
+            margin-bottom: 20px;
+        }
+
+        .btn-small {
+            padding: 8px 16px;
+            background: var(--primary);
+            color: var(--darker);
+            border-radius: 4px;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+
+        .btn-small:hover {
+            background: #00c4e8;
+            box-shadow: 0 0 10px var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--darker);
+            padding: 60px 0 30px;
+            border-top: 1px solid rgba(0, 216, 255, 0.2);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo img {
+            height: 40px;
+            filter: drop-shadow(0 0 5px var(--primary));
+        }
+
+        .footer-about p {
+            color: var(--light);
+            opacity: 0.8;
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(0, 216, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light);
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            color: var(--darker);
+            transform: translateY(-3px);
+            box-shadow: 0 0 15px var(--primary);
+        }
+
+        .footer-links h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: var(--light);
+            opacity: 0.8;
+            transition: all 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+            opacity: 1;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(0, 216, 255, 0.2);
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            color: var(--light);
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        .legal-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .legal-links a {
+            color: var(--light);
+        }
+
+        .legal-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .hero-title {
+                font-size: 2rem;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            .legal-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <img src="images/logo.png" alt="zeroX Logo">
+                    <span class="logo-text">zeroX</span>
+                </div>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="services.html">Services</a>
+                    <a href="team.html">Team</a>
+                    <a href="tutorials.html">Tutorials</a>
+                    <a href="news.html">News</a>
+                    <a href="events.html">Events</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="auth-buttons">
+                    <a href="login.html" class="btn btn-outline">Login</a>
+                    <a href="signup.html" class="btn btn-solid">Sign Up</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="hero-title">UPCOMING EVENTS</h1>
+            <p class="hero-subtitle">Join our cybersecurity workshops, conferences, and training sessions</p>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="events-section">
+        <div class="container">
+            <h2 class="section-title">Our <span>Events</span></h2>
+            <div class="events-grid">
+                <!-- Event 1 -->
+                <div class="event-card">
+                    <div class="event-img" style="background-image: url('images/events/hackathon.jpg')">
+                        <span class="event-date">JULY 15-16, 2025</span>
+                    </div>
+                    <div class="event-content">
+                        <h3>Global Cyber Hackathon</h3>
+                        <div class="event-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Virtual</span>
+                            <span><i class="fas fa-clock"></i> 48 Hours</span>
+                        </div>
+                        <p>Join the largest ethical hacking competition with $50,000 in prizes. Test your skills against real-world challenges.</p>
+                        <a href="#" class="btn-small">Register Now</a>
+                    </div>
+                </div>
+
+                <!-- Event 2 -->
+                <div class="event-card">
+                    <div class="event-img" style="background-image: url('images/events/conference.jpg')">
+                        <span class="event-date">AUGUST 5, 2025</span>
+                    </div>
+                    <div class="event-content">
+                        <h3>zeroX Security Conference</h3>
+                        <div class="event-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Cyber City Convention Center</span>
+                            <span><i class="fas fa-clock"></i> 9:00 AM - 6:00 PM</span>
+                        </div>
+                        <p>Annual conference featuring top cybersecurity experts discussing the latest threats and defense strategies.</p>
+                        <a href="#" class="btn-small">Get Tickets</a>
+                    </div>
+                </div>
+
+                <!-- Event 3 -->
+                <div class="event-card">
+                    <div class="event-img" style="background-image: url('images/events/workshop.jpg')">
+                        <span class="event-date">SEPTEMBER 12, 2025</span>
+                    </div>
+                    <div class="event-content">
+                        <h3>Penetration Testing Workshop</h3>
+                        <div class="event-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> zeroX HQ</span>
+                            <span><i class="fas fa-clock"></i> 10:00 AM - 4:00 PM</span>
+                        </div>
+                        <p>Hands-on training session covering advanced penetration testing techniques and tools.</p>
+                        <a href="#" class="btn-small">Learn More</a>
+                    </div>
+                </div>
+
+                <!-- Event 4 -->
+                <div class="event-card">
+                    <div class="event-img" style="background-image: url('images/events/webinar.jpg')">
+                        <span class="event-date">OCTOBER 8, 2025</span>
+                    </div>
+                    <div class="event-content">
+                        <h3>AI in Cybersecurity Webinar</h3>
+                        <div class="event-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Online</span>
+                            <span><i class="fas fa-clock"></i> 2:00 PM - 4:00 PM</span>
+                        </div>
+                        <p>Learn how artificial intelligence is transforming threat detection and security automation.</p>
+                        <a href="#" class="btn-small">Join Webinar</a>
+                    </div>
+                </div>
+
+                <!-- Event 5 -->
+                <div class="event-card">
+                    <div class="event-img" style="background-image: url('images/events/training.jpg')">
+                        <span class="event-date">NOVEMBER 3-7, 2025</span>
+                    </div>
+                    <div class="event-content">
+                        <h3>Certified Ethical Hacker Bootcamp</h3>
+                        <div class="event-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> zeroX Training Center</span>
+                            <span><i class="fas fa-clock"></i> 5 Days</span>
+                        </div>
+                        <p>Intensive training program preparing you for the CEH certification exam.</p>
+                        <a href="#" class="btn-small">Enroll Now</a>
+                    </div>
+                </div>
+
+                <!-- Event 6 -->
+                <div class="event-card">
+                    <div class="event-img" style="background-image: url('images/events/ctf.jpg')">
+                        <span class="event-date">DECEMBER 10, 2025</span>
+                    </div>
+                    <div class="event-content">
+                        <h3>Capture The Flag Competition</h3>
+                        <div class="event-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Virtual</span>
+                            <span><i class="fas fa-clock"></i> 24 Hours</span>
+                        </div>
+                        <p>Test your cybersecurity skills in this exciting CTF challenge with cash prizes for top teams.</p>
+                        <a href="#" class="btn-small">Register Team</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <img src="images/logo-white.png" alt="zeroX Logo">
+                        <span class="logo-text">zeroX</span>
+                    </div>
+                    <p>zeroX is a leading cybersecurity firm providing cutting-edge security solutions, ethical hacking services, and security training.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Our Services</a></li>
+                        <li><a href="team.html">Meet the Team</a></li>
+                        <li><a href="tutorials.html">Security Tutorials</a></li>
+                        <li><a href="news.html">Security News</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-envelope"></i> security@zerox.com</p>
+                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Security Ave, Cyber City</p>
+                    <p><i class="fas fa-lock"></i> PGP Key: 0x1A2B3C4D5E6F7890</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 zeroX Security. All rights reserved.</p>
+                <div class="legal-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Ethical Guidelines</a>
+                    <a href="#">Responsible Disclosure</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q&A Library | zeroX</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/qna.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="images/logo.png" type="image/png">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="images/logo.png" alt="zeroX Logo" class="logo">
+            <span class="brand-name">zeroX</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="tutorials/sql-injection.html">Tutorials</a></li>
+            <li><a href="news.html">News</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="login.html" class="login-btn">Login</a></li>
+        </ul>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="qna-hero">
+        <h1>Cybersecurity Q&A Library</h1>
+        <p>Find answers to common questions and learn from our community</p>
+    </section>
+
+    <!-- Main Content -->
+    <main class="qna-container">
+        <div class="search-container">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" class="search-input" placeholder="Search questions...">
+        </div>
+
+        <div class="category-filters">
+            <button class="category-btn active">All Categories</button>
+            <button class="category-btn">General Security</button>
+            <button class="category-btn">Ethical Hacking</button>
+            <button class="category-btn">Web Security</button>
+            <button class="category-btn">Network Security</button>
+            <button class="category-btn">Career Advice</button>
+            <button class="category-btn">Tools</button>
+        </div>
+
+        <div class="qna-list">
+            <div class="qna-item">
+                <div class="question">
+                    <span>What is the difference between ethical hacking and penetration testing?</span>
+                    <i class="fas fa-chevron-down toggle-icon"></i>
+                </div>
+                <div class="answer">
+                    <p>Ethical hacking is a broad term that encompasses all forms of authorized hacking activities aimed at improving security. Penetration testing is a specific type of ethical hacking that involves simulating attacks against a system to identify vulnerabilities. While all penetration tests are ethical hacking, not all ethical hacking is penetration testing. Ethical hacking can also include activities like vulnerability research, security assessments, and red team exercises.</p>
+                    <div class="qna-meta">
+                        <span class="qna-category">Ethical Hacking</span>
+                        <span class="qna-date">Posted: June 10, 2025</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="qna-item">
+                <div class="question">
+                    <span>How do I get started in cybersecurity with no experience?</span>
+                    <i class="fas fa-chevron-down toggle-icon"></i>
+                </div>
+                <div class="answer">
+                    <p>Starting in cybersecurity without experience is challenging but achievable. Here's a step-by-step approach:</p>
+                    <ol>
+                        <li>Learn the fundamentals: Networking, operating systems, and basic security concepts</li>
+                        <li>Get hands-on practice with platforms like TryHackMe or Hack The Box</li>
+                        <li>Earn an entry-level certification like CompTIA Security+</li>
+                        <li>Contribute to open source security projects or write security blogs</li>
+                        <li>Look for entry-level IT positions that can lead to security roles</li>
+                        <li>Network with professionals in the field through events and online communities</li>
+                    </ol>
+                    <p>Remember that cybersecurity is a vast field - explore different areas to find what interests you most.</p>
+                    <div class="qna-meta">
+                        <span class="qna-category">Career Advice</span>
+                        <span class="qna-date">Posted: June 8, 2025</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="qna-item">
+                <div class="question">
+                    <span>What are the most important tools for a penetration tester?</span>
+                    <i class="fas fa-chevron-down toggle-icon"></i>
+                </div>
+                <div class="answer">
+                    <p>A penetration tester's toolkit typically includes:</p>
+                    <ul>
+                        <li><strong>Reconnaissance:</strong> Nmap, Recon-ng, theHarvester</li>
+                        <li><strong>Vulnerability Scanning:</strong> Nessus, OpenVAS, Nikto</li>
+                        <li><strong>Exploitation:</strong> Metasploit, Burp Suite, SQLmap</li>
+                        <li><strong>Post-exploitation:</strong> Mimikatz, BloodHound, Empire</li>
+                        <li><strong>Password Attacks:</strong> Hashcat, John the Ripper</li>
+                        <li><strong>Web Proxies:</strong> Burp Suite, OWASP ZAP</li>
+                        <li><strong>Reporting:</strong> Dradis, Faraday</li>
+                    </ul>
+                    <p>Kali Linux is a popular distribution that includes most of these tools pre-installed. However, tools are less important than the methodology and knowledge of how to use them effectively.</p>
+                    <div class="qna-meta">
+                        <span class="qna-category">Tools</span>
+                        <span class="qna-date">Posted: June 5, 2025</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="qna-item">
+                <div class="question">
+                    <span>How can I protect my website from SQL injection attacks?</span>
+                    <i class="fas fa-chevron-down toggle-icon"></i>
+                </div>
+                <div class="answer">
+                    <p>To protect your website from SQL injection:</p>
+                    <ol>
+                        <li><strong>Use prepared statements (parameterized queries):</strong> This is the most effective defense. It ensures user input is treated as data, not executable code.</li>
+                        <li><strong>Implement input validation:</strong> Validate all user input against strict criteria (whitelisting).</li>
+                        <li><strong>Use stored procedures:</strong> When properly implemented, they can help prevent SQL injection.</li>
+                        <li><strong>Apply the principle of least privilege:</strong> Database accounts should have the minimum permissions needed.</li>
+                        <li><strong>Use ORM libraries:</strong> Object-Relational Mapping libraries often include built-in protection.</li>
+                        <li><strong>Regularly update and patch:</strong> Keep all systems and frameworks updated.</li>
+                        <li><strong>Implement a Web Application Firewall (WAF):</strong> While not a complete solution, it can help block some attacks.</li>
+                    </ol>
+                    <p>Remember that security is about layers - no single method provides complete protection.</p>
+                    <div class="qna-meta">
+                        <span class="qna-category">Web Security</span>
+                        <span class="qna-date">Posted: June 3, 2025</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="qna-item">
+                <div class="question">
+                    <span>What's the difference between vulnerability assessment and penetration testing?</span>
+                    <i class="fas fa-chevron-down toggle-icon"></i>
+                </div>
+                <div class="answer">
+                    <p>Vulnerability assessment and penetration testing are complementary but distinct activities:</p>
+                    <p><strong>Vulnerability Assessment:</strong></p>
+                    <ul>
+                        <li>Identifies and catalogs vulnerabilities in systems</li>
+                        <li>Typically uses automated scanning tools</li>
+                        <li>Provides a broad view of potential security issues</li>
+                        <li>Doesn't attempt to exploit found vulnerabilities</li>
+                        <li>Generally less expensive and time-consuming</li>
+                    </ul>
+                    <p><strong>Penetration Testing:</strong></p>
+                    <ul>
+                        <li>Simulates real-world attacks to exploit vulnerabilities</li>
+                        <li>Combines automated tools with manual testing</li>
+                        <li>Demonstrates the impact of vulnerabilities if exploited</li>
+                        <li>Tests detection and response capabilities</li>
+                        <li>More focused and in-depth than vulnerability scanning</li>
+                    </ul>
+                    <p>Most security programs benefit from both approaches - vulnerability assessments for regular, broad coverage and penetration tests for periodic, in-depth evaluation.</p>
+                    <div class="qna-meta">
+                        <span class="qna-category">General Security</span>
+                        <span class="qna-date">Posted: May 30, 2025</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="submit-question">
+            <h2>Can't find what you're looking for?</h2>
+            <p>Submit your cybersecurity question to our experts and we'll add it to our Q&A library.</p>
+            <button class="submit-btn">Submit a Question</button>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section about">
+                <img src="images/logo.png" alt="zeroX Logo" class="footer-logo">
+                <p>zeroX is a collective of ethical hackers and cybersecurity advocates committed to defending the digital frontier.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                </div>
+            </div>
+            <div class="footer-section links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="team.html">Our Team</a></li>
+                    <li><a href="tutorials/sql-injection.html">Tutorials</a></li>
+                </ul>
+            </div>
+            <div class="footer-section contact">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-envelope"></i> teat01@gmail.com</p>
+                <p><i class="fab fa-telegram"></i> @phazto</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 zeroX. All rights reserved.</p>
+            <div class="footer-legal">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Ethical Guidelines</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Toggle Q&A items
+        document.querySelectorAll('.question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('active');
+                
+                // Close other open items
+                document.querySelectorAll('.qna-item').forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+            });
+        });
+        
+        // Submit question button
+        document.querySelector('.submit-btn').addEventListener('click', () => {
+            // In a real implementation, this would open a form or modal
+            alert('In a complete implementation, this would open a form to submit new questions.');
+        });
+        
+        // Search functionality
+        document.querySelector('.search-input').addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            document.querySelectorAll('.qna-item').forEach(item => {
+                const question = item.querySelector('.question span').textContent.toLowerCase();
+                if (question.includes(searchTerm)) {
+                    item.style.display = '';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+        
+        // Category filter
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelector('.category-btn.active').classList.remove('active');
+                this.classList.add('active');
+                
+                const category = this.textContent;
+                if (category === 'All Categories') {
+                    document.querySelectorAll('.qna-item').forEach(item => {
+                        item.style.display = '';
+                    });
+                } else {
+                    document.querySelectorAll('.qna-item').forEach(item => {
+                        const itemCategory = item.querySelector('.qna-category').textContent;
+                        if (itemCategory === category) {
+                            item.style.display = '';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
